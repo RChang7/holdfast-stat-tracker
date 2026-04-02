@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honors</title>
+    <style>
+        .earned { 
+            background-color: greenyellow;
+        }
+        .not_earned { 
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Honors</h1>
+
+    <!-- Form Section -->
+    <form method="POST" action="{{ url_for('honors') }}">
+        <div>
+            {{ form.honor_ID.label }}
+            {{ form.honor_ID }}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+
+    <!-- Table Section -->
+    <h2>Honors Table</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through honors_data and display each row -->
+            {% for honor in honors_data %}
+                <tr class="{{ 'earned' if honor[0] in earned_honors else 'not_earned' }}">
+                    <td>{{ honor[0] }}</td>  <!-- ID -->
+                    <td>{{ honor[1] }}</td>  <!-- Name -->
+                    <td>{{ honor[2] }}</td>  <!-- Description -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{{ url_for('home') }}"><button>Go home</button></a>
+    <br>
+    <a href="{{ url_for('medals') }}"><button>View Medals</button></a>
+</body>
+</html>

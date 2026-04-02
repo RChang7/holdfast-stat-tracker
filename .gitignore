@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+#Custom
+holdfast.db
+medals.txt
+honors.txt
+
 # Distribution / packaging
 .Python
 build/
